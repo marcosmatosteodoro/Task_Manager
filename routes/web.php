@@ -16,3 +16,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resources(['activity' => 'App\Http\Controllers\ActivityController'], ['names' => resourcesName('activity')]);
+
+
+
+function resourcesName(string $name): array
+{
+    return [
+        "index"   => "$name.index",
+        "create"  => "$name.create",
+        "show"    => "$name.show",
+        "edit"    => "$name.edit",
+        "store"   => "$name.store",
+        "update"  => "$name.update",
+        "destroy" => "$name.destroy",
+    ];
+}
