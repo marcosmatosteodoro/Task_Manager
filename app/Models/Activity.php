@@ -10,6 +10,8 @@ class Activity extends Model implements ActivityInterface
 {
     use HasFactory;
 
+    protected $fillable = ['name','description', 'range'];
+
     public function getActivities(array $filters=[]): object
     {
         $activities = self::all();
@@ -50,8 +52,8 @@ class Activity extends Model implements ActivityInterface
 
     public function destroyActivity(int $id): bool
     {
-        $category = self::find($id);
-        return $category->destroy();
+        $activity = self::find($id);
+        return $activity->destroy();
     }
 
 }
